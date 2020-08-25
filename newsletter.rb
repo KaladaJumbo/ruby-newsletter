@@ -54,11 +54,26 @@ def print_one_article(article)
   # Write a method that will take an article hash
   # and print the title, author and text as a formatted string
   # See the README/sample output for examples
+
+  # Mining
+  # by: Destiny Blanda Bruen II
+  # The orthogonal features, when combined, can explode into complexity.
+
+  puts article[:title]
+  puts "by: #{article[:author]}"
+  puts "#{article[:text]}"
+  puts ""
+
 end
 
 def print_many_articles(articles)
   # Write a method that will take in an array of article hashes
   # and format each one using the print_one_article method
+
+  articles.each do |article|
+    print_one_article(article)
+  end
+
 end
 
 def format_campus_location(campus)
@@ -82,6 +97,7 @@ def print_newsletter(number)
   calc = calculate_recipients.join(", ")
   
   print "RECIPIENTS: " + calc
+  puts ""
 
   puts "\nBODY:"
   format_subject
