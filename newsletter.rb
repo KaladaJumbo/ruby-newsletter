@@ -48,6 +48,11 @@ def print_recipients
   # Write a method that uses the output of calculate_recipients
   # and returns a list of emails separated by commas
   # Ex) "abc@email.com, def@email.com, ghi@email.com"
+
+  calc = calculate_recipients.join(", ")
+  calc = calc + "\n"
+  return calc
+  
 end
 
 def print_one_article(article)
@@ -94,10 +99,8 @@ def print_newsletter(number)
   print "SUBJECT: "
   format_subject
 
-  calc = calculate_recipients.join(", ")
   
-  print "RECIPIENTS: " + calc
-  puts ""
+  print "RECIPIENTS: " + print_recipients 
 
   puts "\nBODY:"
   format_subject
