@@ -30,10 +30,18 @@ ARTICLES = [
 def calculate_recipients
   # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
   # write a method that will return an array of only the subscribers who haven't unsubscribed
+
+  SUBSCRIBERS.find_all do |var|
+
+    !UNSUBSCRIBED.any?(var)
+
+  end
+
+  
 end
 
-def first_n_articles(number_of_articles
-  ARTICLES.first(number_of_articles)
+def first_n_articles(number_of_articles)
+  ARTICLES.first(number_of_articles) #int for first
 end
 
 def print_recipients
@@ -54,7 +62,7 @@ def print_many_articles(articles)
 end
 
 def format_campus_location(campus)
-  "Flatiron #{campus["name"]}"
+  "Flatiron #{campus[:name]}"
 end
 
 def format_subject
@@ -71,8 +79,9 @@ def print_newsletter(number)
   print "SUBJECT: "
   format_subject
 
-  print "RECIPIENTS: "
-  print_recipients
+  calc = calculate_recipients.join(", ")
+  
+  print "RECIPIENTS: " + calc
 
   puts "\nBODY:"
   format_subject
@@ -80,13 +89,13 @@ def print_newsletter(number)
   print_many_articles(articles)
   puts format_footer(CAMPUS)
 
-  end
+  
 end
 
 def run
   # We want our program to print three articles by default,
   # but we can change that number here
-  print_newsletter("3")
+  print_newsletter(3)
 end
 
 # When we run "ruby newsletter.rb" in the command line,
